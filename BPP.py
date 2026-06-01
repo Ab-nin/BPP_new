@@ -10,7 +10,7 @@ import os
 # Função para carregar e treinar os modelos
 def load_models():
     # Carregar e treinar o modelo CN
-    data_cn = pd.read_excel("dados_cn.xlsx")
+    data_cn = pd.read_excel("dados_CN.xlsx")
     data_cn = data_cn.dropna()
     x_cn = data_cn.drop(["CN"], axis=1)
     y_cn = data_cn["CN"]
