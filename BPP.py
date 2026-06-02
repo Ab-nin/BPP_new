@@ -186,6 +186,35 @@ def app():
 
     st.divider()
 
+    with st.expander("❗See validation examples"):
+        st.write("""
+        The following examples show a comparison between BPP predictions and the 
+        Biodiesel Analyzer software, using two microalgae strains from the literature 
+        as input (Zhang et al., 2014 and Ferreira et al., 2019).
+        """)
+        
+        st.write("##### Fatty Acid Profile of Selected Strains")
+        
+        data_tabela = {
+            "Fatty Acid": [
+                "Lauric acid (C12:0)", "Myristic acid (C14:0)", "Pentadecanoic acid (C15:0)",
+                "Palmitic acid (C16:0)", "Palmitoleic acid (C16:1)", "Heptadecanoic acid (C17:0)",
+                "Stearic acid (C18:0)", "Oleic acid (C18:1)", "Linoleic acid (C18:2)", "Linolenic acid (C18:3)"
+            ],
+            "Chlorella Vulgaris": [0, 0, 0.11, 44.99, 5.86, 5.72, 1.09, 1.67, 25.4, 12.49],
+            "Botryococcus Terribilis": [0, 0.38, 0, 6.27, 0.23, 0.27, 1.28, 75.19, 3.09, 5.20]
+        }
+        
+        df_tabela = pd.DataFrame(data_tabela)
+        st.dataframe(df_tabela, hide_index=True, use_container_width=True)
+        
+        st.write("##### Predicted Properties Comparison")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.image("chlorella.png", caption="Chlorella Vulgaris", use_container_width=True)
+        with col2:
+            st.image("botri.png", caption="Botryococcus Terribilis", use_container_width=True)
+
     st.write("#### Enter the values for fatty acids:")
 
     # Criar inputs para os valores dos ácidos graxos
